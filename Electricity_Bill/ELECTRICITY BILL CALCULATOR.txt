@@ -1,0 +1,271 @@
+#include<stdio.h>
+#include<string.h>
+#include<conio.h>
+#include<stdlib.h>
+
+
+int slab();
+int non_slab();
+int agriculture();
+int others();
+
+struct electricity 
+{
+    int unit;
+    float amt;
+    int num;
+    float sur_charge;
+    float total_amt;
+};
+
+
+int main()
+{
+    
+    
+    struct electricity e;
+    do{
+    printf("====================================================================\n");
+    printf("********************WELCOME TO ELCTRICITY BOARD*********************\n");
+    printf("====================================================================\n\n");
+    printf("\t\t\t 1 . SLAB \n"); //HERE SLAB REPRESENTS HOUSES 
+    printf("\t\t\t 2 . NON SLAB \n");// HERE NON SLAB REPRESENTS THE SHOPS AND COMMERCIAL BUIDINGS
+    printf("\t\t\t 3 . AGRICULTURE\n");// HERE AGRICULTURE REPRESENTS FARMING
+    printf("\t\t\t 4 . OTHERS\n ");//HERE OTHERS REPRESENTS THE PEOPLE WHO ARE UNDER THE BELOW POVERTY LINE(BPL)
+    printf("\t\t\t 5 . EXIT\n\n");// TERMINATES THE PROGRAM
+    printf("PLEASE ENTER YOUR CHOICE  :: ");
+    scanf("%d",&e.num);
+    switch(e.num)
+    {
+        case 1:
+        slab();
+        break;
+        case 2:
+        non_slab();
+        break;
+        case 3:
+        agriculture();
+        break;
+        case 4:
+        others();
+        break;
+        case 5:
+        exit(0);
+    default:
+        printf("OOPS SOMETHING YOU CHOSEN IS NOT UNDER OUR SERVICES ");
+    }
+    }while(e.num!=5);
+    
+    
+}
+
+int slab()
+{
+    /*IN THE BELOW PROGRAM WE CAN UNDERSTAND THAT FROM 0 UNITS TO 50 UNITS THERE WILL BE 
+    AN CERTAIN AMOUNT FOR EXAMPLE : THERE IS AN 2RS   WE CAN CALCULATE FIRST 50 UNITS BY MULTIPLYING 
+    IT INTO  NO.OF UNITS*2  AND FOR THE 51 UNITS TO 150 UNITS  WE HAVE TO CALCULATE  THE FIRST 50 UNITS
+    HAVE TO ADD AND SUBTRACT NO OF UNITS-FIRST 50 UNITS AND MULTIPLY WITH AMOUNT OF THIS REMAINING
+    100 UNITS 
+    0 UNITS TO 50 UNITS  :: NO.OF UNITS*2;
+    51 UNITS TO 150 UNITS  :: 100+((NO.OF UNITS-FIRST 0 TO 50 UNITS)*3);
+    LIKE ABOVE CALCULATION THE PROCESS WILL BE GO UPTO GRETER THAN 250 UNITS
+    */
+    printf("\t\t\t*****************************************************************************\n");
+    printf("\t\t\t|||||||||||||||||||WELCOME TO ELECTRICITY BOARD DEPARTMENT|||||||||||||||||||\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t============ELECTRICITY BOARD RATE CHART (RATES PER UNIT)====================\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+	
+    printf("\t\t\t0 Unit to 50 Units ...........................................=Rs.2.0/Unit\n\n");
+
+    printf("\t\t\t51 Unit to 150 Units .......................................... =Rs.3/Unit\n\n");
+
+    printf("\t\t\t151 Unit to 250 Units ......................................... =Rs.4/Unit\n\n");
+    
+    printf("\t\t\tGREATER THAN 250 Units ......................................... =Rs.4.50/Unit\n\n");
+
+    printf("\t\t\t*****************************************************************************\n\n");;
+
+
+    struct electricity e;
+    printf("\t\t\tENTER THE NUMBER OF UNITS CONSUMED :: ");
+    scanf("%d",&e.unit);
+    if(e.unit <= 50)
+    {
+        e.amt = e.unit * 2; 
+    }
+    else if(e.unit <= 150)
+    {
+        e.amt = 100 + ((e.unit-50) * 3);
+    }
+    else if(e.unit <= 250)
+    {
+        e.amt = 400 + ((e.unit-150) * 4);
+    }
+    else
+    {
+        e.amt = 800 + ((e.unit-250) * 4.50);
+    }
+
+    e.sur_charge = e.amt * 0.20;
+    e.total_amt  = e.amt + e.sur_charge;
+    printf("\t\t\t***************************************************************************\n");
+    printf("\t\t\tTHE PAYABLE AMOUNT OF THE GIVEN ELECTRICITY BILL :: %f\n",e.total_amt);
+    printf("\t\t\t***************************************************************************\n");
+   
+return 0;    
+}
+
+
+int non_slab()
+{
+    printf("\t\t\t*****************************************************************************\n");
+    printf("\t\t\t|||||||||||||||||||WELCOME TO ELECTRICITY BOARD DEPARTMENT|||||||||||||||||||\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t============ELECTRICITY BOARD RATE CHART (RATES PER UNIT)====================\n\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+
+    printf("\t\t\t0 Unit to 50 Units ...........................................=Rs.5.0/Unit\n\n");
+
+    printf("\t\t\t51 Unit to 150 Units .......................................... =Rs.6/Unit\n\n");
+
+    printf("\t\t\t151 Unit to 250 Units ......................................... =Rs.7/Unit\n\n");
+    
+    printf("\t\t\tGREATER THAN 250 Units ......................................... =Rs.10/Unit\n\n");
+
+    printf("\t\t\t*****************************************************************************\n\n");;
+
+
+    struct electricity e;
+    printf("\t\t\tENTER THE NUMBER OF UNITS CONSUMED :: ");
+    scanf("%d",&e.unit);
+    if(e.unit <= 50)
+    {
+        e.amt = e.unit * 5;
+    }
+    else if(e.unit <= 150)
+    {
+        e.amt = 250 + ((e.unit-50) * 6);
+    }
+    else if(e.unit <= 250)
+    {
+        e.amt = 850 + ((e.unit-150) * 7);
+    }
+    else
+    {
+        e.amt = 1550 + ((e.unit-250) * 10);
+    }
+
+    e.sur_charge = e.amt * 0.20;
+    e.total_amt  = e.amt + e.sur_charge;
+    printf("\t\t\t***************************************************************************\n");
+    printf("\t\t\tTHE PAYABLE AMOUNT OF THE GIVEN ELECTRICITY BILL :: %f\n",e.total_amt);
+    printf("\t\t\t***************************************************************************\n");
+return 0;
+}
+
+
+int agriculture()
+{
+    printf("\t\t\t*****************************************************************************\n");
+    printf("\t\t\t|||||||||||||||||||WELCOME TO ELECTRICITY BOARD DEPARTMENT|||||||||||||||||||\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t============ELECTRICITY BOARD RATE CHART (RATES PER UNIT)====================\n\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t0 Unit to 50 Units ...........................................=Rs.1.0/Unit\n\n");
+
+    printf("\t\t\t51 Unit to 150 Units .......................................... =Rs.2/Unit\n\n");
+
+    printf("\t\t\t151 Unit to 250 Units ......................................... =Rs.3/Unit\n\n");
+    
+    printf("\t\t\tGREATER THAN 250 Units ......................................... =Rs.3.50/Unit\n\n");
+
+    printf("\t\t\t*****************************************************************************\n\n");;
+
+
+    struct electricity e;
+    printf("\t\t\tENTER THE NUMBER OF UNITS CONSUMED :: ");
+    scanf("%d",&e.unit);
+    if(e.unit <= 50)
+    {
+        e.amt = e.unit * 1;
+    }
+    else if(e.unit <= 150)
+    {
+        e.amt = 50 + ((e.unit-50) * 2);
+    }
+    else if(e.unit <= 250)
+    {
+        e.amt = 250 + ((e.unit-150) * 3);
+    }
+    else
+    {
+        e.amt = 550 + ((e.unit-250) * 3.50);
+    }
+
+    e.sur_charge = e.amt * 0.20;
+    e.total_amt  = e.amt + e.sur_charge;
+    printf("\t\t\t***************************************************************************\n");
+    printf("\t\t\tTHE PAYABLE AMOUNT OF THE GIVEN ELECTRICITY BILL :: %f\n",e.total_amt);
+    printf("\t\t\t***************************************************************************\n");
+return 0;
+}
+
+int others()
+{
+    printf("\t\t\t*****************************************************************************\n");
+    printf("\t\t\t|||||||||||||||||||WELCOME TO ELECTRICITY BOARD DEPARTMENT|||||||||||||||||||\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t============ELECTRICITY BOARD RATE CHART (RATES PER UNIT)====================\n\n");
+    printf("\t\t\t*****************************************************************************\n\n");
+    printf("\t\t\t0 Unit to 50 Units ...........................................=Rs.0.75/Unit\n\n");
+
+    printf("\t\t\t51 Unit to 150 Units .......................................... =Rs.1/Unit\n\n");
+
+    printf("\t\t\t151 Unit to 250 Units ......................................... =Rs.1.50/Unit\n\n");
+    
+    printf("\t\t\tGREATER THAN 250 Units ......................................... =Rs.2/Unit\n\n");
+
+    printf("\t\t\t*****************************************************************************\n\n");;
+
+
+    struct electricity e;
+    printf("\t\t\tENTER THE NUMBER OF UNITS CONSUMED :: ");
+    scanf("%d",&e.unit);
+    if(e.unit <= 50)
+    {
+        e.amt = e.unit * 0.75;
+    }
+    else if(e.unit <= 150)
+    {
+        e.amt = 37.5 + ((e.unit-50) * 1);
+    }
+    else if(e.unit <= 250)
+    {
+        e.amt = 137.5 + ((e.unit-150) * 1.50);
+    }
+    else
+    {
+        e.amt = 287.5 + ((e.unit-250) * 2);
+    }
+
+    e.sur_charge = e.amt * 0.20;
+    e.total_amt  = e.amt + e.sur_charge;
+    printf("\t\t\t***************************************************************************\n");
+    printf("\t\t\tTHE PAYABLE AMOUNT OF THE GIVEN ELECTRICITY BILL :: %f\n",e.total_amt);
+    printf("\t\t\t***************************************************************************\n");
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
